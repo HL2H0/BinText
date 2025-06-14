@@ -4,6 +4,8 @@ public class BinLib
 {
     public static Dictionary<char, string> CharBin = new()
     {
+        //Space Char
+        { ' ', "00100000" },
         { 'a', "01100001" },
         { 'b', "01100010" },
         { 'c', "01100011" },
@@ -57,4 +59,21 @@ public class BinLib
         { 'Y', "01011001" },
         { 'Z', "01011010" }
     };
+
+    public static string TextToBin(string text)
+    {
+        var result = "";
+
+        foreach (var c in text)
+        {
+            if (!CharBin.ContainsKey(c))
+            {
+                Console.WriteLine($"[Error]Invalid Character : {c}");
+                continue;
+            }
+            var bin = CharBin[c];
+            result = result + " " + bin;
+        }
+        return result;
+    }
 }
